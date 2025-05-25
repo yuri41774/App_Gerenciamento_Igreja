@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Ministérios</title>
+    <style>
+        /* Estilo básico para facilitar a visualização */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .ministerio-item {
+            background: #f1f1f1;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        #mensagemFeedback {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">&larr; Voltar para o Início</a>
+
+        <h1>Gerenciamento de Ministérios/Departamentos</h1>
+
+        <div class="form-section">
+            <h2>Adicionar Novo Ministério</h2>
+            <form onsubmit="adicionarMinisterio(); return false;">
+                <label for="nomeMinisterio">Nome do Ministério/Departamento:</label>
+                <input type="text" id="nomeMinisterio" placeholder="Ex: Louvor, Células, Diaconia" required>
+
+                <label for="liderMinisterio">Líder (Opcional):</label>
+                <input type="text" id="liderMinisterio" placeholder="Nome do líder do ministério">
+
+                <label for="descricaoMinisterio">Descrição:</label>
+                <textarea id="descricaoMinisterio" rows="5" placeholder="Descreva as principais atividades e propósitos do ministério..."></textarea>
+
+                <button type="button" onclick="adicionarMinisterio()">Adicionar Ministério</button>
+            </form>
+
+            <div id="mensagemFeedback" role="alert" aria-live="polite"></div>
+        </div>
+
+        <div class="ministerios-list">
+            <h2>Lista de Ministérios</h2>
+            <div id="listaDeMinisterios">
+                <p>Nenhum ministério cadastrado ainda.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let ministerios = [];
+
+        window.onload = function () {
+            carregarMinisterios();
+        };
+
+        function adicionarMinisterio() {
+            const nome = document.getElementById('nomeMinisterio').value.trim();
+            const lider = document.getElementById('liderMinisterio').value.trim();
+            const descricao = document.getElementById('descricaoMinisterio').value.trim();
+
+            if (nome === '') {
+                alert('O nome do Ministério/Departamento é obrigatório!');
+                return;
+            }
+
+            const novoMinisterio = {
+                id: Date.now(),
+                nome,
+                lider,
+                descricao
+            };
+
+            ministerios.push(novoMinisterio);
+            salvarMinisterios();
+            renderizarMinisterios();
+
+            document.getElementById('nomeMinisterio').value = '';
+            document.getElementById('liderMinisterio').value = '';
+            document.getElementById('descricaoMinisterio').value = '';
+            document.getElementById('mensagemFeedback').innerText = "Ministério adicionado com sucesso!";
+        }
+
+        function salvarMinisterios() {
+            localStorage.setItem('ministeriosIgreja', JSON.stringify(ministerios));
+        }
+
+        function carregarMinisterios() {
+            const ministeriosSalvos = localStorage.getItem('ministeriosIgreja');
+            if (ministeriosSalvos) {
+                ministerios = JSON.parse(ministeriosSalvos);
+            }
+            renderizarMinisterios();
+        }
+
+        function renderizarMinisterios() {
+            const listaDeMinisteriosDiv = document.getElementById('listaDeMinisterios');
+            listaDeMinisteriosDiv.innerHTML = '';
+
+            if (ministerios.length === 0) {
+                listaDeMinisteriosDiv.innerHTML = '<p>Nenhum ministério cadastrado ainda.</p>';
+                return;
+            }
+
+            ministerios.forEach(ministerio => {
+                const ministerioItem = document.createElement('div');
+                ministerioItem.classList.add('ministerio-item');
+                ministerioItem.innerHTML = `
+                    <button onclick="excluirMinisterio(${ministerio.id})">Excluir</button>
+                    <h3>${ministerio.nome}</h3>
+                    ${ministerio.lider ? `<p><strong>Líder:</strong> ${ministerio.lider}</p>` : ''}
+                    ${ministerio.descricao ? `<p><strong>Descrição:</strong> ${ministerio.descricao.replace(/\n/g, '<br>')}</p>` : ''}
+                `;
+                listaDeMinisteriosDiv.appendChild(ministerioItem);
+            });
+        }
+
+        function excluirMinisterio(id) {
+            ministerios = ministerios.filter(ministerio => ministerio.id !== id);
+            salvarMinisterios();
+            renderizarMinisterios();
+            document.getElementById('mensagemFeedback').innerText = "Ministério excluído com sucesso.";
+        }
+    </script>
+</body>
+</html>

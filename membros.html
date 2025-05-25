@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Membros</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/membros.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">&larr; Voltar para o Início</a>
+
+        <h1>Gerenciamento de Membros</h1>
+
+        <div class="form-section">
+            <h2>Adicionar Novo Membro</h2>
+            <label for="nomeMembro">Nome:</label>
+            <input type="text" id="nomeMembro" placeholder="Nome completo do membro" required>
+
+            <label for="telefoneMembro">Telefone:</label>
+            <input type="tel" id="telefoneMembro" placeholder="(XX) XXXXX-XXXX">
+
+            <label for="emailMembro">E-mail (opcional):</label>
+            <input type="email" id="emailMembro" placeholder="email@exemplo.com">
+
+            <button onclick="adicionarMembro()">Adicionar Membro</button>
+        </div>
+
+        <div class="members-list">
+            <h2>Lista de Membros</h2>
+            <div id="listaDeMembros">
+                <p>Nenhum membro cadastrado ainda.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/membros.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+/* css/home.css - Estilos específicos da página Home */
+.container h1 {
+    color: #4CAF50; /* Verde principal para o título da Home */
+    margin-bottom: 20px;
+}
+
+.container p {
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+.menu-home {
+    display: grid; /* Usa grid para organizar os itens */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Colunas responsivas */
+    gap: 25px; /* Espaçamento entre os itens */
+    padding: 0 20px;
+}
+
+.menu-item {
+    background-color: #f8f9fa; /* Fundo mais claro para os itens */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    text-decoration: none; /* Remove sublinhado dos links */
+    color: #333; /* Cor do texto padrão */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px); /* Efeito de levantar no hover */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item h3 {
+    color: #007bff; /* Azul para os títulos dos itens */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.menu-item p {
+    font-size: 0.95em;
+    color: #666;
+    margin-bottom: 0; /* Remove margem inferior para parágrafos */
+}
+
+/* Estilos para a seção de Últimos Comunicados na Home */
+.latest-communications-section {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+.latest-communications-section h2 {
+    color: #4CAF50; /* Mesma cor do título principal da Home */
+    margin-bottom: 30px;
+    font-size: 1.8em;
+}
+
+#latestCommunicationsList {
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsivo */
+    gap: 20px;
+}
+
+.home-communication-item {
+    background-color: #f0fdf0; /* Um verde bem claro */
+    border: 1px solid #d4edda; /* Borda verde suave */
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.home-communication-item:hover {
+    transform: translateY(-3px);
+}
+
+.home-communication-item h3 {
+    color: #28a745; /* Verde para o título do comunicado */
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.home-communication-item p {
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    display: -webkit-box; /* Para limitar linhas de texto */
+    -webkit-line-clamp: 3; /* Limita a 3 linhas */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Esconde o excesso */
+    text-overflow: ellipsis; /* Adiciona "..." */
+}
+
+.home-communication-item small {
+    display: block;
+    text-align: right;
+    color: #777;
+    font-size: 0.8em;
+}
+
+.view-all-link {
+    display: inline-block;
+    background-color: #007bff; /* Azul padrão para link "Ver todos" */
+    color: white;
+    padding: 10px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.view-all-link:hover {
+    background-color: #0056b3;
+}

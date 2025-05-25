@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
+</head>
+<body>
+    <div class="communication-section">
+            <h2>Publicar Comunicado</h2>
+            <label for="tituloComunicado">Título do Comunicado:</label>
+            <input type="text" id="tituloComunicado" placeholder="Ex: Culto de Domingo" required>
+
+            <label for="conteudoComunicado">Conteúdo do Comunicado:</label>
+            <textarea id="conteudoComunicado" rows="5" placeholder="Digite aqui o aviso ou mensagem para os membros..."></textarea>
+
+            <button onclick="publicarComunicado()">Publicar Comunicado</button>
+        </div>
+
+        <div class="communications-list">
+            <h2>Comunicados Publicados</h2>
+            <div id="listaDeComunicados">
+                <p>Nenhum comunicado publicado ainda.</p>
+            </div>
+        </div>
+
+        // Array para armazenar os comunicados
+        let comunicados = [];
+
+        // Adiciona carregamento de comunicados ao carregar a janela
+        window.onload = function() {
+            carregarMembros(); // Mantém o carregamento de membros
+            carregarComunicados(); // Adiciona o carregamento de comunicados
+        };
+
+        // Função para publicar um novo comunicado
+        function publicarComunicado() {
+            const titulo = document.getElementById('tituloComunicado').value.trim();
+            const conteudo = document.getElementById('conteudoComunicado').value.trim();
+
+            if (titulo === '' || conteudo === '') {
+                alert('O título e o conteúdo do comunicado são obrigatórios!');
+                return;
+            }
+
+            const novoComunicado = {
+                id: Date.now(), // ID único
+                titulo: titulo,
+                conteudo: conteudo,
+                data: new Date().toLocaleString('pt-BR') // Data e hora atual formatada
+            };
+
+            comunicados.unshift(novoComunicado); // Adiciona no início do array para o mais recente aparecer primeiro
+            salvarComunicados(); // Salva no localStorage
+            renderizarComunicados(); // Atualiza a lista na tela
+
+            // Limpa os campos do formulário
+            document.getElementById('tituloComunicado').value = '';
+            document.getElementById('conteudoComunicado').value = '';
+        }
+
+        // Função para salvar os comunicados no localStorage
+        function salvarComunicados() {
+            localStorage.setItem('comunicadosIgreja', JSON.stringify(comunicados));
+        }
+
+        // Função para carregar os comunicados do localStorage
+        function carregarComunicados() {
+            const comunicadosSalvos = localStorage.getItem('comunicadosIgreja');
+            if (comunicadosSalvos) {
+                comunicados = JSON.parse(comunicadosSalvos);
+            }
+            renderizarComunicados(); // Exibe os comunicados carregados
+        }
+
+        // Função para renderizar (mostrar) os comunicados na tela
+        function renderizarComunicados() {
+            const listaDeComunicadosDiv = document.getElementById('listaDeComunicados');
+            listaDeComunicadosDiv.innerHTML = ''; // Limpa a lista antes de renderizar
+
+            if (comunicados.length === 0) {
+                listaDeComunicadosDiv.innerHTML = '<p>Nenhum comunicado publicado ainda.</p>';
+                return;
+            }
+
+            comunicados.forEach(comunicado => {
+                const comunicadoItem = document.createElement('div');
+                comunicadoItem.classList.add('communication-item');
+                comunicadoItem.innerHTML = `
+                    <button onclick="excluirComunicado(${comunicado.id})">Excluir</button>
+                    <h3>${comunicado.titulo}</h3>
+                    <p>${comunicado.conteudo.replace(/\n/g, '<br>')}</p>
+                    <small>Publicado em: ${comunicado.data}</small>
+                `;
+                listaDeComunicadosDiv.appendChild(comunicadoItem);
+            });
+        }
+
+        // Função para excluir um comunicado
+        function excluirComunicado(id) {
+            comunicados = comunicados.filter(comunicado => comunicado.id !== id);
+            salvarComunicados();
+            renderizarComunicados();
+        }
+</body>
+</html>

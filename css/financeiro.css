@@ -1,0 +1,150 @@
+/* css/financas.css - Estilos específicos da página de finanças */
+.summary-section {
+    background-color: #e0f7fa; /* Azul claro para o destaque do saldo */
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.summary-section h2 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #2c3e50;
+}
+
+#saldoAtual {
+    font-weight: bold;
+    font-size: 2.2em;
+}
+
+#saldoAtual.positive {
+    color: #28a745; /* Verde para saldo positivo */
+}
+
+#saldoAtual.negative {
+    color: #dc3545; /* Vermelho para saldo negativo */
+}
+
+.form-section select,
+.form-section input[type="number"],
+.form-section input[type="date"],
+.form-section input[type="text"] {
+    width: calc(100% - 24px);
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.form-section button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-section button:hover {
+    background-color: #0056b3;
+}
+
+.transactions-list {
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.transactions-list h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.filter-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    background-color: #6c757d; /* Cinza para botões de filtro */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+    width: auto; /* Anula o 100% de botões gerais */
+}
+
+.filter-btn.active {
+    background-color: #007bff; /* Azul para o filtro ativo */
+}
+
+.filter-btn:hover:not(.active) {
+    background-color: #5a6268;
+}
+
+.transaction-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.transaction-info {
+    flex-grow: 1; /* Ocupa o máximo de espaço */
+}
+
+.transaction-info .description {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.transaction-info .value {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-left: 10px;
+}
+
+.transaction-info .value.entrada {
+    color: #28a745; /* Verde para valores de entrada */
+}
+
+.transaction-info .value.saida {
+    color: #dc3545; /* Vermelho para valores de saída */
+}
+
+.transaction-actions {
+    margin-left: 15px;
+}
+
+.transaction-actions button {
+    background-color: #dc3545;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    width: auto;
+}
+
+.transaction-actions button:hover {
+    background-color: #c82333;
+}

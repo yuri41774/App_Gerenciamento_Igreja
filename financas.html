@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Controle Financeiro</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/financas.css" />
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">&larr; Voltar para o Início</a>
+        <h1>Controle Financeiro</h1>
+
+        <div class="summary-section">
+            <h2>Saldo Atual: <span id="saldoAtual" class="positive">R$ 0,00</span></h2>
+        </div>
+
+        <div class="form-section">
+            <h2>Registrar Transação</h2>
+            <label for="tipoTransacao">Tipo:</label>
+            <select id="tipoTransacao">
+                <option value="entrada">Entrada (Dízimos/Ofertas)</option>
+                <option value="saida">Saída (Despesa)</option>
+            </select>
+
+            <label for="descricaoTransacao">Descrição:</label>
+            <input type="text" id="descricaoTransacao" placeholder="Ex: Dízimo de João, Compra de material" required />
+
+            <label for="valorTransacao">Valor (R$):</label>
+            <input type="number" id="valorTransacao" step="0.01" placeholder="Ex: 100.50" required />
+
+            <label for="dataTransacao">Data:</label>
+            <input type="date" id="dataTransacao" required />
+
+            <button onclick="adicionarTransacao()">Adicionar Transação</button>
+        </div>
+
+        <div class="transactions-list">
+            <h2>Extrato de Transações</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filtrarTransacoes('todas')">Todas</button>
+                <button class="filter-btn" onclick="filtrarTransacoes('entrada')">Entradas</button>
+                <button class="filter-btn" onclick="filtrarTransacoes('saida')">Saídas</button>
+            </div>
+            <div id="listaDeTransacoes">
+                <p>Nenhuma transação registrada ainda.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/financas.js"></script>
+</body>
+</html>

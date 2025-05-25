@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Comunicados da Igreja</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/comunicados.css" />
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">&larr; Voltar para o Início</a>
+
+        <h1>Comunicados da Igreja</h1>
+
+        <div class="communication-section">
+            <h2>Publicar Comunicado</h2>
+            <form onsubmit="publicarComunicado(); return false;">
+                <label for="tituloComunicado">Título do Comunicado:</label>
+                <input type="text" id="tituloComunicado" placeholder="Ex: Culto de Domingo" required />
+
+                <label for="conteudoComunicado">Conteúdo do Comunicado:</label>
+                <textarea id="conteudoComunicado" rows="5" placeholder="Digite aqui o aviso ou mensagem para os membros..."></textarea>
+
+                <button type="submit">Publicar Comunicado</button>
+            </form>
+
+            <div id="mensagemFeedback" role="alert" aria-live="polite"></div>
+        </div>
+
+        <div class="communications-list">
+            <h2>Comunicados Publicados</h2>
+            <div id="listaDeComunicados">
+                <p>Nenhum comunicado publicado ainda.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/comunicados.js"></script>
+</body>
+</html>

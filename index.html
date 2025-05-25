@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Aplicativo para gerenciamento da igreja: membros, comunicados, ministérios e finanças." />
+    <title>App da Igreja - Início</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo(a) ao App de Gerenciamento da Igreja</h1>
+        <p>Selecione uma das opções abaixo para começar:</p>
+
+        <nav class="menu-home" aria-label="Menu principal do aplicativo">
+            <a href="membros.html" class="menu-item" title="Gerenciar membros da igreja">
+                <h3>Gerenciar Membros</h3>
+                <p>Cadastre e organize as informações dos membros.</p>
+            </a>
+            <a href="comunicados.html" class="menu-item" title="Acessar comunicados da igreja">
+                <h3>Comunicados</h3>
+                <p>Publique e visualize avisos e mensagens importantes.</p>
+            </a>
+            <a href="ministerios.html" class="menu-item" title="Gerenciar ministérios e departamentos">
+                <h3>Gerenciar Ministérios/Departamentos</h3>
+                <p>Organize os grupos e ministérios da igreja.</p>
+            </a>
+            <a href="financas.html" class="menu-item" title="Controle financeiro da igreja">
+                <h3>Controle Financeiro</h3>
+                <p>Registre dízimos, ofertas e despesas.</p>
+            </a>
+        </nav>
+
+        <section class="latest-communications-section">
+            <h2>Últimos Comunicados</h2>
+            <div id="latestCommunicationsList">
+                <p>Nenhum comunicado recente para exibir.</p>
+            </div>
+            <a href="comunicados.html" class="view-all-link">Ver todos os comunicados &rarr;</a>
+        </section>
+    </div>
+
+    <script src="js/home.js"></script>
+</body>
+</html>

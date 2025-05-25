@@ -1,0 +1,48 @@
+/* css/membros.css - Estilos específicos da página de membros */
+.form-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-section button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.members-list {
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+.members-list h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.member-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.member-info strong {
+    color: #007bff;
+}
+.member-actions button {
+    background-color: #dc3545; /* Vermelho para Excluir */
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+.member-actions button:hover {
+    background-color: #c82333;
+}
